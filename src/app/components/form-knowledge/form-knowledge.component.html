@@ -1,0 +1,39 @@
+<div *ngIf="msg" class="container-info-to-user" role="log" aria-live="polite">
+  <p class="floatMsg">{{ msg }}</p>
+  <app-spinner [hidden]="hidden"></app-spinner>
+</div>
+
+<button *ngIf="viewEdit && !viewForm" class="button button-edit" (click)="addKnowledge()">Añadir</button>
+
+<form [formGroup]="formKnowledge" *ngIf="viewForm" class="formEdit" (ngSubmit)="update($event)">
+  <div class="msg" role="log" aria-live="polite">
+    <p *ngIf="NameKnowledge?.touched && (NameKnowledge?.errors?.['required'] || UrlImage?.errors?.['required'])">
+      Todos los campos deben estar completos.
+    </p>
+    <p *ngIf="NameKnowledge?.errors && NameKnowledge?.touched && NameKnowledge?.errors?.['maxlength']">
+      El nombre tiene un máximo de 30 carácteres.
+    </p>
+    <p *ngIf="UrlImage?.errors && UrlImage?.touched && UrlImage?.errors?.['maxlength']">
+      La url tiene un máximo de 255 carácteres.
+    </p>
+  </div>
+  <fieldset>
+    <legend>{{ title }}</legend>
+    <input type="hidden" formControlName="knowledgeId" name="knowledgeId" id="knowledgeId">
+    <label for="nameKnowledge">Nombre del conocimiento</label>
+    <input #input type="text" class="form-input" name="nameKnowledge" formControlName="nameKnowledge" id="nameKnowledge"
+      required />
+    <label for="urlImage">Url de la imagen</label>
+    <input type="text" class="form-input" name="urlImage" formControlName="urlImage" id="urlImage" required />
+  </fieldset>
+  <div class="panelBtn">
+    <button type="submit" [disabled]="!formKnowledge.valid" class="button button-edit">{{nameKnowledge ? "Actualizar" :
+      "Agregar"}}</button>
+    <button class="button button-edit" (click)="hideForm()">Cancelar</button>
+  </div>
+</form>
+
+<ul class="section-techs">
+  <app-knowledge *ngFor="let knowledge of knowledges" [knowledge]="knowledge" [viewEdit]="viewEdit"
+    (updateKnowledge)="showForm($event)" (action)="actionListener($event)"></app-knowledge>
+</ul>

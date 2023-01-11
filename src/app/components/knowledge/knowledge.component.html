@@ -1,0 +1,11 @@
+<li class="tech">
+  <app-button-edit *ngIf="viewEdit">
+    <app-edit (click)="update()"></app-edit>
+    <app-delete (click)="delete($event)"></app-delete>
+  </app-button-edit>
+
+  <figure>
+    <img [src]="src" [alt]="knowledge['name_knowledge']" loading="lazy">
+    <figcaption>{{ knowledge.name_knowledge }}</figcaption>
+  </figure>
+</li>

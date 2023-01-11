@@ -1,0 +1,68 @@
+<a href="#home" class="button skip-to-content">
+  Saltar al contenido principal.
+</a>
+<app-header></app-header>
+<app-login (modeEdit)="toggleEdit()"></app-login>
+<main>
+  <app-section [classes]="'section section-introduction'" [id]="'home'">
+
+    <img src="/assets/images/photo.webp" alt="" class="introduction-img">
+    <div class="introduction-text">
+      <h1 class="introduction-title"><span>¡Hola! Soy</span><span class="introduction-title-name">Giuliano Martín
+          Cappa</span></h1>
+      <h2 class="introduction-subtitle">Qrfneebyynqbe ShyyFgnpx Ernpg</h2>
+      <app-social-card></app-social-card>
+    </div>
+
+  </app-section>
+
+  <app-section #aboutMe [classes]="'section'">
+
+    <h3 class="section-title" id="about-me">Sobre mí</h3>
+
+    <app-form-about-me [viewEdit]="viewEdit" [description]="description"
+      (watchAboutMe)="changeDescription($event)"></app-form-about-me>
+
+    <p *ngFor="let paragraph of description" class="section-paragraph">{{ paragraph }}</p>
+
+  </app-section>
+
+  <app-section [classes]="'section'" [section]="'projects'">
+
+    <h3 class="section-title" id="projects">Proyectos</h3>
+
+    <app-form-projects (updatePage)="handlerProject($event)" [viewEdit]="viewEdit"
+      [projects]="projects"></app-form-projects>
+
+  </app-section>
+
+  <app-section [classes]="'section'" [section]="'knowledge'">
+
+    <h3 class="section-title" id="knowledge">Conocimientos</h3>
+
+    <app-form-knowledge [knowledges]="knowledges" [viewEdit]="viewEdit"
+      (updatePage)="handlerKnowledge($event)"></app-form-knowledge>
+
+  </app-section>
+
+  <app-section [classes]="'section'">
+
+    <h3 class="section-title" id="contact">Contacto</h3>
+
+    <app-form-contact [viewEdit]="viewEdit" (updateContact)="changeContact($event)" [contact]="contact"
+      [email]="email"></app-form-contact>
+    <div>
+      <p class="section-paragraph" *ngFor="let paragraph of contact">
+        {{ paragraph }}
+      </p>
+      <address class="section-paragraph">
+        <a href="mailto:cappa.giuliano@gmail.com">
+          {{ email }}
+        </a>
+      </address>
+    </div>
+    <app-social-card></app-social-card>
+
+  </app-section>
+
+</main>

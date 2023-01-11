@@ -1,0 +1,13 @@
+@use "sass:math";
+
+@mixin underline($height, $width) {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  height: $height;
+  width: $width;
+  border-radius: math.div($height, 2);
+
+  @content;
+}

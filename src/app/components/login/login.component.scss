@@ -1,0 +1,92 @@
+.modal {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  padding: 2rem;
+  width: 320px;
+  background-color: var(--color-black-1);
+  border: solid 2px var(--color-menu-item);
+  border-radius: 8px;
+  transform: translate(-50%, -50%);
+  z-index: 1000;
+
+  &-login {
+    visibility: visible;
+    opacity: 1;
+    transition-property: visibility, opacity;
+    transition: 500ms linear;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .modal-login {
+    transition-duration: 800ms;
+  }
+}
+
+.login {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+  color: var(--color-white-pure);
+  gap: 1rem;
+
+  & *:not(:first-child) {
+    font-family: "Poppins", sans-serif;
+  }
+
+  & h3 {
+    margin-top: 0;
+    font-size: 1.5rem;
+  }
+
+  & fieldset {
+    display: flex;
+    flex-direction: column;
+    padding: 1.4rem;
+    gap: 0.8rem;
+  }
+
+  & fieldset legend {
+    color: var(--color-primary);
+    font-size: 1.2rem;
+    font-weight: 500;
+    padding-left: 0.65em;
+    padding-right: 0.65em;
+  }
+}
+
+.button {
+  &-form {
+    cursor: pointer;
+    border: solid 2px var(--color-primary);
+    background-color: transparent;
+    background-color: var(--color-black);
+    color: var(--color-white-pure);
+  }
+
+  &-leave-edit {
+    margin-left: auto;
+    margin-right: auto;
+    background-color: var(--color-black-pure);
+    color: var(--color-white-pure);
+    font-family: "Poppins", sans-serif;
+    border: solid 2px var(--color-primary);
+    cursor: pointer;
+  }
+}
+
+.bg-modal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100vh;
+  background-color: rgb(22 22 22 / 0.75);
+}
+
+.hidden {
+  visibility: hidden;
+  opacity: 0;
+}

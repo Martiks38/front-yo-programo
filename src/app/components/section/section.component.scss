@@ -1,0 +1,45 @@
+@use "../../styles/mixins";
+
+.section {
+  --padding: 2rem;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  max-width: var(--width-content);
+  width: 100%;
+  margin: 0 auto;
+  padding: var(--padding);
+  font-family: "Poppins", sans-serif;
+}
+
+@media screen and (min-width: 48.5rem) {
+  .section-introduction {
+    flex-direction: row;
+    min-height: auto;
+    height: calc(100vh - 4.5rem);
+    justify-content: space-between;
+    gap: 1.6rem;
+  }
+
+  .introduction-text {
+    text-align: left;
+  }
+
+  .introduction-title-name {
+    font-size: 2.75rem;
+    line-height: 1;
+  }
+
+  .introduction-subtitle {
+    font-size: 2rem;
+  }
+}
+
+@media screen and (min-width: 61rem) {
+  .section {
+    padding-left: 0;
+    padding-right: 0;
+  }
+}

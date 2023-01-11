@@ -1,0 +1,32 @@
+%menuButtonLine {
+  --height-line: 0.25rem;
+
+  position: absolute;
+  height: var(--height-line);
+  width: 1.8rem;
+  background-color: var(--color-black-pure-alpha-80);
+  border-radius: calc(var(--height-line) / 2);
+}
+
+.menu {
+  --dist-position: 2rem;
+
+  position: fixed;
+  bottom: var(--dist-position);
+  right: var(--dist-position);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 3rem;
+  width: 3.4rem;
+  background-color: var(--color-secondary);
+  border-style: none;
+  border-radius: var(--border-radius-10);
+  z-index: 100;
+}
+
+@media screen and (min-width: 48.5rem) {
+  .menu {
+    visibility: hidden;
+  }
+}

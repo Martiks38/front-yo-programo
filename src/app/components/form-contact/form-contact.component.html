@@ -1,0 +1,34 @@
+<app-button-edit *ngIf="viewEdit && !isEdit" (click)="showForm()">
+  <app-edit></app-edit>
+  <span>Editar</span>
+</app-button-edit>
+
+<form [formGroup]="formContact" *ngIf="isEdit" class="formEdit" (ngSubmit)="update($event)">
+  <div class="msg" role="log" aria-live="polite">
+    <p *ngIf="FinalMsg?.touched && FinalMsg?.errors?.['required'] && Email?.errors?.['required']">
+      Todos los campos deben estar completos.
+    </p>
+    <p *ngIf="FinalMsg?.errors && FinalMsg?.errors?.['maxlength']">
+      Máximo 255 carácteres.
+    </p>
+    <p *ngIf="Email?.errors && Email?.errors?.['email']">
+      No es un correo válido.
+    </p>
+  </div>
+  <div *ngIf="!msg">
+    <fieldset>
+      <legend>Actualizar sección "Contacto"</legend>
+      <label for="finalMsg">Introducir mensaje de cierre</label>
+      <textarea #textarea formControlName="finalMsg" name="finalMsg" id="finalMsg" cols="30" rows="10" maxlength="255"
+        required></textarea>
+      <label for="email">Correo electrónico de contacto</label>
+      <input type="text" formControlName="email" class="form-input" name="email" id="email" required>
+    </fieldset>
+    <div class="panelBtn" *ngIf="hidden">
+      <button type="submit" class="button button-edit" [disabled]="!formContact.valid">Actualizar</button>
+      <button class="button button-edit" (click)="toggleEdit()">Cancelar</button>
+    </div>
+  </div>
+</form>
+
+<app-spinner [hidden]="hidden"></app-spinner>

@@ -1,0 +1,34 @@
+@media only screen and (max-width: 61.9375rem) {
+  .card-containerImg {
+    display: flex;
+    overflow-x: scroll;
+    scroll-snap-type: x mandatory;
+    aspect-ratio: auto;
+
+    &::-webkit-scrollbar-track {
+      margin-block: 0.5em;
+    }
+  }
+
+  .card-containerImg::-webkit-scrollbar {
+    height: 8px;
+    background-color: var(--color-scrollbar-card);
+  }
+
+  .card-containerImg::-webkit-scrollbar-thumb {
+    background-color: var(--color-scrollbar-thumb-card);
+    border-radius: 100vh;
+  }
+
+  .card-img {
+    position: static;
+    scroll-snap-align: center;
+  }
+}
+
+@media screen and (min-width: 36.25rem) {
+  .button {
+    padding-left: 1rem;
+    padding-right: 1rem;
+  }
+}

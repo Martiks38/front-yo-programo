@@ -1,0 +1,61 @@
+<div *ngIf="msg" class="container-info-to-user" role="log" aria-live="polite">
+  <p>{{ msg }}</p>
+  <app-spinner [hidden]="hidden"></app-spinner>
+</div>
+
+<button *ngIf="viewEdit && !viewForm" class="button button-edit button-edit_center"
+  (click)="addProject()">Añadir</button>
+
+<form [formGroup]="formProject" *ngIf="viewForm" class="formEdit" (ngSubmit)="update($event)">
+  <div class="msg" role="log" aria-live="polite">
+    <p
+      *ngIf="Title?.touched && (Title?.errors?.['required'] || Description?.errors?.['required'] || UrlCode?.errors?.['required'] || UrlImage?.errors?.['required'])">
+      Los campos título, descripción, url del código y url de imagen de presentación deben estar completados.
+    </p>
+    <p *ngIf="Title?.errors && Title?.errors?.['maxlength']">
+      El título tiene como máximo 30 carácteres.
+    </p>
+    <p *ngIf="UrlCode?.errors?.['maxlength']">
+      La url del código tienen como máximo 255 carácteres.
+    </p>
+    <p *ngIf="UrlImage?.errors?.['maxlength']">
+      La url de las imágenes tienen como máximo 1500 carácteres.
+    </p>
+  </div>
+  <fieldset>
+    <legend>{{ title }}</legend>
+    <input type="hidden" formControlName="projectId" name="projectId" id="projectId">
+
+    <label for="titleProject">Título del projecto</label>
+    <input #input type="text" class="form-input" name="titleProject" formControlName="titleProject" id="titleProject"
+      required />
+
+    <label for="description">Descripción del projecto</label>
+    <textarea name="description" formControlName="description" id="description" cols="30" rows="10" required></textarea>
+
+    <label for="techs">Tecnologías utilizadas</label>
+    <textarea formControlName="techs" name="techs" id="techs" cols="10" rows="8"
+      placeholder="Separadas por saltos de línea(Enter)" required></textarea>
+
+    <label for="urlPage">Url de la página</label>
+    <input type="text" class="form-input" name="urlPage" formControlName="urlPage" id="urlPage" />
+
+    <label for="urlCode">Url del repositorio del código</label>
+    <input type="text" class="form-input" name="urlCode" formControlName="urlCode" id="urlCode" required />
+
+    <label for="urlImage">Urls de las imágenes (separadas por Enter)</label>
+    <textarea name="urlImage" formControlName="urlImage" id="urlImage" cols="30" rows="8" required></textarea>
+
+  </fieldset>
+
+  <div class="panelBtn">
+    <button type="submit" [disabled]="!formProject.valid" class="button button-edit">{{titleProject ?"Actualizar" :
+      "Agregar"}}</button>
+    <button class="button button-edit" (click)="hideForm()">Cancelar</button>
+  </div>
+</form>
+
+<div class="wrapperCards">
+  <app-card-project *ngFor="let project of projects" [viewEdit]="viewEdit" [project]="project"
+    (updateProject)="showForm($event)" (action)="actionListener($event)"></app-card-project>
+</div>

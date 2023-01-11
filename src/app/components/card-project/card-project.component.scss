@@ -1,0 +1,127 @@
+.button.button-link {
+  position: relative;
+  background-color: transparent;
+  color: var(--color-white-pure);
+  font-family: "Poppins", sans-serif;
+  font-weight: 600;
+  transition: color 300ms ease-in-out;
+  border: solid 2px var(--color-primary);
+  overflow: hidden;
+
+  & .button-text {
+    position: relative;
+    z-index: 1;
+  }
+}
+
+.card {
+  display: grid;
+  grid-template-rows: max-content auto;
+  height: 100%;
+  max-width: 21.875rem;
+  width: 100%;
+  background-color: var(--color-black-1);
+  font-family: "Poppins", sans-serif;
+  border-radius: var(--border-radius-8);
+  overflow: hidden;
+  box-shadow: 0 2px 5px var(--shadow-color-1-card-project),
+    0 2px 10px var(--shadow-color-2-card-project);
+
+  &-description {
+    padding: 1.4em;
+    display: flex;
+    flex-direction: column;
+  }
+
+  &-containerImg {
+    position: relative;
+    overflow: hidden;
+    width: 100%;
+    aspect-ratio: auto 2/1;
+  }
+
+  &-img {
+    --z: 1;
+
+    position: absolute;
+    top: -100%;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: var(--color-black);
+    object-fit: contain;
+    object-position: top center;
+    transition: top 300ms;
+
+    &.active {
+      top: 0;
+      box-shadow: 0 2px 10px var(--color-black-pure-alpha-50);
+      z-index: calc(var(--z) + 1);
+    }
+
+    &.start-out {
+      z-index: var(--z);
+    }
+  }
+}
+
+.card-title {
+  margin-top: 0;
+  font-size: 1.2rem;
+  line-height: 1.875rem;
+}
+
+.card-text .card-paragraph:last-child {
+  margin-bottom: 1.125em;
+}
+
+.card-paragraph {
+  margin-top: 0;
+  font-size: 1rem;
+  line-height: 1.5rem;
+}
+
+.card-links {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  margin-top: auto;
+  width: 100%;
+  gap: 1rem;
+}
+
+@media only screen and (max-width: 61.9375rem) {
+  .card-containerImg {
+    display: flex;
+    overflow-x: scroll;
+    scroll-snap-type: x mandatory;
+    aspect-ratio: auto;
+
+    &::-webkit-scrollbar-track {
+      margin-block: 0.5em;
+    }
+  }
+
+  .card-containerImg::-webkit-scrollbar {
+    height: 8px;
+    background-color: var(--color-scrollbar-card);
+  }
+
+  .card-containerImg::-webkit-scrollbar-thumb {
+    background-color: var(--color-scrollbar-thumb-card);
+    border-radius: 100vh;
+  }
+
+  .card-img {
+    position: static;
+    scroll-snap-align: center;
+  }
+}
+
+.floatBtns {
+  --position: 1rem;
+  position: absolute;
+  top: var(--position);
+  right: var(--position);
+  z-index: 5;
+}

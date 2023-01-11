@@ -1,0 +1,27 @@
+.socialCard {
+  display: flex;
+  margin-top: 1.6rem;
+  align-items: center;
+  justify-content: center;
+  gap: 1.4em;
+
+  &__button {
+    width: 3rem;
+    transition: transform 0.3s ease-in-out;
+
+    &_invert {
+      filter: invert(1);
+    }
+
+    &:hover {
+      transform: scale(1.2);
+    }
+  }
+
+  & img {
+    width: 100%;
+    height: auto;
+    object-fit: cover;
+    vertical-align: middle;
+  }
+}

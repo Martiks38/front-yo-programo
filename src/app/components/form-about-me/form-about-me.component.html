@@ -1,0 +1,26 @@
+<app-button-edit *ngIf="viewEdit && !isEdit" (click)="showForm()">
+  <app-edit></app-edit>
+  <span>Editar</span>
+</app-button-edit>
+
+<form [formGroup]="formAboutMe" *ngIf="isEdit" class="formEdit" (ngSubmit)="update($event)">
+  <div class="msg" role="log" aria-live="polite">
+    <p *ngIf="AboutMe?.errors && AboutMe?.touched && AboutMe?.errors?.['maxlength']">
+      Máximo 255 carácteres.
+    </p>
+  </div>
+  <div *ngIf="!msg">
+    <fieldset>
+      <legend>Actualizar sección "Sobre mí"</legend>
+      <label for="aboutMe">Introducir descripción</label>
+      <textarea #textarea name="aboutMe" formControlName="aboutMe" id="aboutMe" cols="30" rows="10" maxlength="255"
+        required></textarea>
+    </fieldset>
+    <div class="panelBtn" *ngIf="hidden">
+      <button type="submit" class="button button-edit" [disabled]="!formAboutMe.valid">Actualizar</button>
+      <button class="button button-edit" (click)="toggleEdit()">Cancelar</button>
+    </div>
+  </div>
+</form>
+
+<app-spinner [hidden]="hidden"></app-spinner>

@@ -1,0 +1,15 @@
+.section-techs {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1.5rem;
+  padding-left: 0;
+  margin-top: 2rem;
+  margin-bottom: 0;
+  max-width: 43.75rem;
+  list-style-type: none;
+
+  & > * {
+    flex-grow: 1;
+    min-width: 100px;
+  }
+}
