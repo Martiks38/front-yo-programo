@@ -1,4 +1,4 @@
-<article class="relative card">
+<article class="relative card" (mouseenter)="slider($event)" (mouseleave)="reset()">
 
   <div class="floatBtns">
     <app-button-edit *ngIf="viewEdit" [bg]="'var(--color-black-1)'">
@@ -7,7 +7,7 @@
     </app-button-edit>
   </div>
 
-  <div class="card-containerImg" (mouseenter)="slider($event)" (mouseleave)="reset()">
+  <div class="card-containerImg">
     <img *ngFor="let url of urlImgs; index as i; first as isFirst" [src]="url"
       alt="Imagen de presentación {{i + 1}} de la página {{project['title']}}"
       [class]="{'card-img': true, 'active': isFirst}" width="350" height="175" />

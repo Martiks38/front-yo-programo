@@ -37,10 +37,10 @@ export class AppComponent implements OnInit {
   ngOnInit() {
     this.dataUser
       .getDescription()
-      .subscribe((descript) => (this.description = descript.split('\n')));
+      .subscribe((descript) => (this.description = descript.split('\\n')));
 
     this.dataUser.getContact().subscribe((contact) => {
-      let message = contact.split('\n');
+      let message = contact.split('\\n');
       this.contact = message.slice(0, -1);
       this.email = message.at(-1) as string;
     });
@@ -49,9 +49,9 @@ export class AppComponent implements OnInit {
       .getKnowledges()
       .subscribe((knowledges) => (this.knowledges = knowledges));
 
-    this.dataProject.getProjects().subscribe((projects) => {
-      this.projects = projects;
-    });
+    this.dataProject
+      .getProjects()
+      .subscribe((projects) => (this.projects = projects));
   }
 
   toggleEdit() {
@@ -59,11 +59,11 @@ export class AppComponent implements OnInit {
   }
 
   changeDescription(description: string) {
-    this.description = description.split('\n');
+    this.description = description.split('\\n');
   }
 
   changeContact(changes: { contact: string; email: string }) {
-    this.contact = changes.contact.split('\n');
+    this.contact = changes.contact.split('\\n');
     this.email = changes.email;
   }
 

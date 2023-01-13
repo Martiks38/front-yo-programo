@@ -23,9 +23,9 @@ export class CardProjectComponent implements OnInit {
   imgs!: NodeListOf<HTMLImageElement>;
 
   ngOnInit(): void {
-    let sliceParagraphs = this.project.description.split('\n');
+    let sliceParagraphs = this.project.description.split('\\n');
 
-    this.urlImgs = this.project.url_img.split('\n');
+    this.urlImgs = this.project.url_img.split('\\n');
 
     this.paragraphs = sliceParagraphs.slice(0, -1);
 

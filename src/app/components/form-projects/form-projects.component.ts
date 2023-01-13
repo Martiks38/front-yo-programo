@@ -94,9 +94,9 @@ export class FormProjectsComponent {
 
     setTimeout(() => this.input.nativeElement?.focus(), 300);
 
-    let desc = project.description.split('\n').slice(0, -1);
+    let desc = project.description.split('\\n').slice(0, -1);
     let made = project.description
-      .split('\n')
+      .split('\\n')
       ?.at(-1)
       ?.split(/Hecho con |, | y /)
       .filter((words) => words !== '')

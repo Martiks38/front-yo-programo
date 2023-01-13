@@ -56,7 +56,7 @@ export class FormContactComponent {
 
     this.toggleEdit();
 
-    let finalMsg = this.contact.join('\n');
+    let finalMsg = this.contact.join('\\n');
 
     setTimeout(() => this.textarea.nativeElement?.focus(), 300);
 
@@ -71,7 +71,7 @@ export class FormContactComponent {
 
     let finalMsg = this.formContact.get('finalMsg')?.value;
     let email = this.formContact.get('email')?.value;
-    let contact = [finalMsg, email].join('\n');
+    let contact = [finalMsg, email].join('\\n');
 
     this.hidden = !this.hidden;
 

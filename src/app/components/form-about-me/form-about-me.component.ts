@@ -47,7 +47,7 @@ export class FormAboutMeComponent {
   showForm() {
     this.toggleEdit();
 
-    let aboutMe = this.description.join('\n');
+    let aboutMe = this.description.join('\\n');
 
     this.formAboutMe = this.formBuilder.group({
       aboutMe: [aboutMe, [Validators.maxLength(255), Validators.required]],
