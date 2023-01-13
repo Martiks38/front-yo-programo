@@ -6,7 +6,7 @@ import { Observable } from 'rxjs';
   providedIn: 'root',
 })
 export class AuthenticationService {
-  url = 'https://back-yo-programo-production.up.railway.app/';
+  url = 'https://back-yo-programo-production.up.railway.app/auth/login';
 
   constructor(private http: HttpClient) {}
 
