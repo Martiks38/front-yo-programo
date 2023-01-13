@@ -10,7 +10,7 @@ const headers = new HttpHeaders({ 'Content-Type': 'application/json' });
   providedIn: 'root',
 })
 export class DataKnowledgeService {
-  private apiUrl = 'https://back-yo-programo-production.up.railway.app/';
+  private apiUrl = 'https://back-yo-programo-production.up.railway.app/api/v1/';
 
   http = inject(HttpClient);
 
