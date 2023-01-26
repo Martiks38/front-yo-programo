@@ -32,13 +32,13 @@ export class HeaderComponent {
   connectionText: string;
 
   constructor(private modeEditService: ModeEditService) {
-    this.connectionText = 'Iniciar Sesión';
+    this.connectionText = 'INICIAR SESIÓN';
   }
 
   ngOnInit() {
     this.modeEditService.dispatchEdit.subscribe(
       (mode) =>
-        (this.connectionText = mode ? 'Cerrar Sesión' : 'Iniciar Sesión')
+        (this.connectionText = mode ? 'CERRAR SESIÓN' : 'INICIAR SESIÓN')
     );
   }
 

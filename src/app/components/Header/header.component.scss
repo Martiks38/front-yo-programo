@@ -67,6 +67,10 @@
   padding: 0.4em 0.75em;
 }
 
+.navMenu__item_lightColor {
+  color: var(--color-menu-item-2);
+}
+
 .navMenu__item a::before {
   @include mixins.underline(4px, 0) {
     right: 0;
