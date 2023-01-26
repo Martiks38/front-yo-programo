@@ -1,6 +1,5 @@
 import { Component, Input } from '@angular/core';
 import { ModeEditService } from 'src/app/service/modeEdit/mode-edit.service';
-import { $, $$ } from '../../utils/selectors';
 
 @Component({
   selector: 'app-header',
@@ -16,6 +15,14 @@ export class HeaderComponent {
     hidden: 'true',
     expanded: 'false',
   };
+
+  links = [
+    ['INICIO', '#home'],
+    ['SOBRE MÍ', '#about-me'],
+    ['PROYECTOS', '#projects'],
+    ['CONOCIMIENTOS', '#knowledge'],
+    ['CONTACTO', '#contact'],
+  ];
 
   header: Element | null = null;
   menu: Element | null = null;
@@ -47,9 +54,10 @@ export class HeaderComponent {
     this.viewFormLogin = false;
   }
 
-  outEdit() {
-    if (!this.viewEdit) return;
+  toggleViewNav() {
+    if (window.innerWidth > 1041) return;
 
-    this.modeEditService.dispatchEdit.emit(false);
+    document.querySelector('.header')?.classList.toggle('menu-view');
+    document.querySelector('.menu')?.classList.toggle('collapse');
   }
 }

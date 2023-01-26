@@ -134,22 +134,14 @@
   border-radius: calc(var(--height-line) / 2);
 }
 
-.menu {
-  &.collapse .menu__line {
-    $color-shadow: transparent;
+.menu__line {
+  @extend %menuButtonLine;
 
-    box-shadow: 0 0 $color-shadow, 0 0 $color-shadow;
-  }
+  $position-top-line: calc(2 * var(--height-line));
+  $position-bottom-line: calc(-2 * var(--height-line));
 
-  &__line {
-    @extend %menuButtonLine;
+  box-shadow: 0 $position-top-line var(--color-black-pure),
+    0 $position-bottom-line var(--color-black-pure);
 
-    $position-top-line: calc(2 * var(--height-line));
-    $position-bottom-line: calc(-2 * var(--height-line));
-
-    box-shadow: 0 $position-top-line var(--color-black-pure),
-      0 $position-bottom-line var(--color-black-pure);
-
-    transition: box-shadow 300ms ease-in;
-  }
+  transition: box-shadow 300ms ease-in;
 }

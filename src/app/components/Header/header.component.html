@@ -1,4 +1,4 @@
-<app-button [btnStyles]="styles" [accesibility]="values">
+<app-button [btnStyles]="styles" [accesibility]="values" (click)="toggleViewNav()">
   <span class="menu__line"></span>
 </app-button>
 
@@ -8,22 +8,8 @@
     <div class="panelUser">
       <nav class="nav">
         <ul class="navMenu">
-          <li class="navMenu__item">
-            <a href="#home">INICIO</a>
-          </li>
-          <li class="navMenu__item">
-            <a href="#about-me">SOBRE MÍ</a>
-          </li>
-          <li class="navMenu__item">
-            <a href="#projects">PROYECTOS</a>
-          </li>
-          <li class="navMenu__item">
-            <a href="#knowledge">
-              CONOCIMIENTOS
-            </a>
-          </li>
-          <li class="navMenu__item">
-            <a href="#contact">CONTACTO</a>
+          <li class="navMenu__item" *ngFor="let link of links">
+            <a [href]="link[1]" (click)="toggleViewNav()">{{ link[0] }}</a>
           </li>
         </ul>
       </nav>

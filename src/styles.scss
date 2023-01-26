@@ -235,6 +235,12 @@ main .section:last-child {
   position: relative;
 }
 
+.menu.collapse .menu__line {
+  $color-shadow: transparent;
+
+  box-shadow: 0 0 $color-shadow, 0 0 $color-shadow;
+}
+
 @media screen and (min-width: 36.25rem) {
   .button {
     padding-left: 1rem;
