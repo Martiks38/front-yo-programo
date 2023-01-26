@@ -16,13 +16,12 @@
   }
 
   & figure img {
-    width: 100%;
     height: auto;
+    max-height: 100px;
     min-height: 80px;
     min-width: 80px;
     object-fit: cover;
-    object-position: center;
-    aspect-ratio: 1/1 auto;
+    object-position: top;
     vertical-align: middle;
   }
 }
