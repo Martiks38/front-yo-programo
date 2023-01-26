@@ -8,6 +8,7 @@
     <p *ngIf="AboutMe?.errors && AboutMe?.touched && AboutMe?.errors?.['maxlength']">
       Máximo 255 carácteres.
     </p>
+    <p *ngIf="msg">{{ msg }}</p>
   </div>
   <div *ngIf="!msg">
     <fieldset>
