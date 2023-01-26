@@ -18,10 +18,10 @@
   }
 }
 
-@media (prefers-reduced-motion: reduce) {
-  .modal-login {
-    transition-duration: 800ms;
-  }
+.panelBtn {
+  display: flex;
+  justify-content: space-evenly;
+  width: 100%;
 }
 
 .login {
@@ -89,4 +89,10 @@
 .hidden {
   visibility: hidden;
   opacity: 0;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .modal-login {
+    transition-duration: 800ms;
+  }
 }

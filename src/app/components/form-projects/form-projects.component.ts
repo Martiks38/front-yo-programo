@@ -102,7 +102,6 @@ export class FormProjectsComponent {
       .filter((words) => words !== '')
       .join('\n');
 
-    console.log(project);
     this.formProject = this.formBuilder.group({
       projectId: [project.project_id],
       titleProject: [

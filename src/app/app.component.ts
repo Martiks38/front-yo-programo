@@ -9,6 +9,7 @@ import { Action, Knowledge, Project } from './interfaces';
 import { DataKnowledgeService } from './service/knowledge/data-knowledge.service';
 import { DataProjectService } from './service/project/data-project.service';
 import { DataUserService } from './service/user/dataUser.service';
+import { ModeEditService } from './service/modeEdit/mode-edit.service';
 
 @Component({
   selector: 'app-root',
@@ -30,11 +31,15 @@ export class AppComponent implements OnInit {
   dataProject = inject(DataProjectService);
   dataKnowledge = inject(DataKnowledgeService);
 
-  constructor() {
-    this.viewEdit = Boolean(window.sessionStorage.getItem('isLogin'));
+  constructor(private modeEditService: ModeEditService) {
+    this.viewEdit = false;
   }
 
   ngOnInit() {
+    this.modeEditService.dispatchEdit.subscribe(
+      (mode) => (this.viewEdit = mode)
+    );
+
     this.dataUser
       .getDescription()
       .subscribe((descript) => (this.description = descript.split('\\n')));

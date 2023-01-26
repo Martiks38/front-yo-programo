@@ -1,8 +1,8 @@
-<div [class]="{'bg-modal': true, 'hidden': isHiddenLogin}" (click)="closeModal()"></div>
-<div [class]="{'modal': true, 'modal-login': true, 'hidden': isHiddenLogin}">
+<div class="bg-modal" (click)="closeModal()"></div>
+<div class="modal modal-login">
 
-  <form [formGroup]="form" class="login" *ngIf="!isLogin; else finishSession" (ngSubmit)="onSubmit($event)">
-    <h3>Iniciar modo edición</h3>
+  <form [formGroup]="form" class="login" (ngSubmit)="onSubmit($event)">
+    <h3>Iniciar sesión</h3>
     <div class="form-error-message" role="log" aria-live="polite">
       <div *ngIf="Username?.errors && Username?.touched">
         <p *ngIf="Username?.errors?.['minlength'] || Username?.errors?.['maxlength']">
@@ -27,11 +27,14 @@
         [ngClass]="{'form-input': true, 'form-input-warning': (Password?.errors && Password?.touched) || Password?.hasError('password')}"
         placeholder="passwordExample123">
     </fieldset>
-    <button type="submit" class="button button-form">Ingresar</button>
+    <div class="panelBtn">
+      <button type="submit" class="button button-form">Ingresar</button>
+      <button class="button button-form" (click)="closeModal()">Cancelar</button>
+    </div>
   </form>
 
-  <ng-template #finishSession>
-    <button class="button button-leave-edit" (click)="outEdit()">Cerrar modo edición</button>
-  </ng-template>
-
 </div>
+
+<style>
+
+</style>

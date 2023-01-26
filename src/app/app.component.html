@@ -1,8 +1,8 @@
 <a href="#home" class="button skip-to-content">
   Saltar al contenido principal.
 </a>
-<app-header></app-header>
-<app-login (modeEdit)="toggleEdit()"></app-login>
+<app-header [viewEdit]="viewEdit"></app-header>
+
 <main>
   <app-section [classes]="'section section-introduction'" [id]="'home'">
 

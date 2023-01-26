@@ -2,38 +2,25 @@ import {
   Component,
   ElementRef,
   EventEmitter,
-  HostListener,
-  OnDestroy,
-  OnInit,
+  Input,
   Output,
   ViewChild,
 } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { AuthenticationService } from 'src/app/service/authentication.service';
+import { ModeEditService } from 'src/app/service/modeEdit/mode-edit.service';
 
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
   styleUrls: ['./login.component.scss'],
 })
-export class LoginComponent implements OnInit, OnDestroy {
-  @Output() modeEdit: EventEmitter<boolean> = new EventEmitter();
-  @ViewChild('login') login!: ElementRef;
+export class LoginComponent {
+  @Input() viewForm!: boolean;
+  @Output() close: EventEmitter<boolean> = new EventEmitter();
 
-  @HostListener('document:keydown', ['$event'])
-  handleView($event: KeyboardEvent): void {
-    let pressCtrlAndAlt = $event.ctrlKey && $event.altKey;
-
-    if (pressCtrlAndAlt && $event.key === 'e') {
-      this.isHiddenLogin = !this.isHiddenLogin;
-      setTimeout(() => {
-        if (this.login?.nativeElement) this.login?.nativeElement.focus();
-      }, 200);
-    }
-  }
-
-  isHiddenLogin: boolean = true;
-  isLogin: boolean = false;
+  @ViewChild('login')
+  login!: ElementRef;
 
   error: string = '';
 
@@ -42,10 +29,9 @@ export class LoginComponent implements OnInit, OnDestroy {
 
   constructor(
     private formBuilder: FormBuilder,
-    private authentication: AuthenticationService
+    private authentication: AuthenticationService,
+    private modeEditService: ModeEditService
   ) {
-    this.isLogin = Boolean(window.sessionStorage.getItem('isLogin'));
-
     this.form = this.formBuilder.group({
       username: [
         '',
@@ -64,14 +50,10 @@ export class LoginComponent implements OnInit, OnDestroy {
         ],
       ],
     });
-  }
 
-  ngOnInit(): void {
-    document.addEventListener('click', this.closeModal);
-  }
-
-  ngOnDestroy(): void {
-    document.removeEventListener('click', this.closeModal);
+    setTimeout(() => {
+      if (this.login?.nativeElement) this.login?.nativeElement.focus();
+    }, 300);
   }
 
   get Username() {
@@ -83,7 +65,7 @@ export class LoginComponent implements OnInit, OnDestroy {
   }
 
   closeModal() {
-    this.isHiddenLogin = !this.isHiddenLogin;
+    this.close.emit(false);
   }
 
   onSubmit(event: Event) {
@@ -91,24 +73,13 @@ export class LoginComponent implements OnInit, OnDestroy {
 
     this.authentication.login(this.form.value).subscribe((data) => {
       if (data) {
-        setTimeout(() => (this.isLogin = true), 1000);
-        window.sessionStorage.setItem('isLogin', 'true');
-        this.modeEdit.emit(true);
-        this.isHiddenLogin = !this.isHiddenLogin;
+        this.modeEditService.dispatchEdit.emit(true);
 
         this.error = '';
+        this.close.emit(false);
       } else {
         this.error = 'Las credenciales que estás usando no son válidas.';
       }
     });
-  }
-
-  outEdit() {
-    window.sessionStorage.removeItem('isLogin');
-
-    this.isHiddenLogin = !this.isHiddenLogin;
-    this.modeEdit.emit(false);
-
-    setTimeout(() => (this.isLogin = false), 1000);
   }
 }
