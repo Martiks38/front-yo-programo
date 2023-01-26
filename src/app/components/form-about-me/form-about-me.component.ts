@@ -11,8 +11,7 @@ import { DataUserService } from 'src/app/service/user/dataUser.service';
 
 @Component({
   selector: 'app-form-about-me',
-  templateUrl: './form-about-me.component.html',
-  styleUrls: ['./form-about-me.component.scss'],
+  templateUrl: './form-about-me.component.html'
 })
 export class FormAboutMeComponent {
   @Input() viewEdit!: boolean;

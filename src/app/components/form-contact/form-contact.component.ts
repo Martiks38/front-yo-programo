@@ -12,7 +12,6 @@ import { DataUserService } from 'src/app/service/user/dataUser.service';
 @Component({
   selector: 'app-form-contact',
   templateUrl: './form-contact.component.html',
-  styleUrls: ['./form-contact.component.scss'],
 })
 export class FormContactComponent {
   @Input() viewEdit!: boolean;

@@ -2,7 +2,6 @@ import { Component } from '@angular/core';
 
 @Component({
   selector: 'app-delete',
-  templateUrl: './delete.component.html',
-  styleUrls: ['./delete.component.scss']
+  templateUrl: './delete.component.html'
 })
 export class DeleteComponent  {}
