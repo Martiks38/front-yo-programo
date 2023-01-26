@@ -32,14 +32,16 @@ export class HeaderComponent {
   connectionText: string;
 
   constructor(private modeEditService: ModeEditService) {
-    let isLogin = Boolean(window.sessionStorage.getItem('isLogin'));
+    let isLogin = window.sessionStorage.getItem('isLogin') === 'true';
 
-    if (isLogin) this.modeEditService.dispatchEdit.emit(true);
-
-    this.connectionText = 'INICIAR SESIÓN';
+    this.connectionText = isLogin ? 'CERRAR SESIÓN' : 'INICIAR SESIÓN';
   }
 
   ngOnInit() {
+    let isLogin = window.sessionStorage.getItem('isLogin') === 'true';
+
+    if (isLogin) this.modeEditService.dispatchEdit.emit(true);
+
     this.modeEditService.dispatchEdit.subscribe(
       (mode) =>
         (this.connectionText = mode ? 'CERRAR SESIÓN' : 'INICIAR SESIÓN')
