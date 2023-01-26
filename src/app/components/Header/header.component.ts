@@ -43,6 +43,8 @@ export class HeaderComponent {
   }
 
   connect() {
+    this.toggleViewNav();
+
     if (this.viewEdit) {
       this.modeEditService.dispatchEdit.emit(false);
     } else {
