@@ -1,5 +1,17 @@
 @use "../../styles/mixins";
 
+.button__none {
+  background-color: transparent;
+  border: none;
+  border-radius: var(--border-radius-8);
+  transition: background-color 300ms linear;
+  cursor: pointer;
+
+  &:hover {
+    background-color: #0e0e10;
+  }
+}
+
 .logo {
   height: 2.5rem;
   width: auto;
@@ -47,6 +59,7 @@
   }
 }
 
+.navMenu__item,
 .navMenu__item a {
   display: inline-block;
   vertical-align: middle;
@@ -64,13 +77,24 @@
   }
 }
 
-@media screen and (min-width: 43.8125rem) {
+.panelUser {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1em;
+}
+
+@media screen and (min-width: 61rem) {
   .navMenu {
+    flex-direction: row;
+  }
+
+  .panelUser {
     flex-direction: row;
   }
 }
 
-@media screen and (min-width: 48.5rem) {
+@media screen and (min-width: 65rem) {
   .header {
     position: static;
     transform: translateY(0%);

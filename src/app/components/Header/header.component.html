@@ -5,26 +5,31 @@
 <header class="header">
   <div class="header-container">
     <img src="/assets/arg-programa.png" alt="" class="logo">
-    <nav class="nav">
-      <ul class="navMenu">
-        <li class="navMenu__item">
-          <a href="#home">INICIO</a>
-        </li>
-        <li class="navMenu__item">
-          <a href="#about-me">SOBRE MÍ</a>
-        </li>
-        <li class="navMenu__item">
-          <a href="#projects">PROYECTOS</a>
-        </li>
-        <li class="navMenu__item">
-          <a href="#knowledge">
-            CONOCIMIENTOS
-          </a>
-        </li>
-        <li class="navMenu__item">
-          <a href="#contact">CONTACTO</a>
-        </li>
-      </ul>
-    </nav>
+    <div class="panelUser">
+      <nav class="nav">
+        <ul class="navMenu">
+          <li class="navMenu__item">
+            <a href="#home">INICIO</a>
+          </li>
+          <li class="navMenu__item">
+            <a href="#about-me">SOBRE MÍ</a>
+          </li>
+          <li class="navMenu__item">
+            <a href="#projects">PROYECTOS</a>
+          </li>
+          <li class="navMenu__item">
+            <a href="#knowledge">
+              CONOCIMIENTOS
+            </a>
+          </li>
+          <li class="navMenu__item">
+            <a href="#contact">CONTACTO</a>
+          </li>
+        </ul>
+      </nav>
+      <button class="button__none navMenu__item" (click)="connect()">{{ connectionText }}</button>
+    </div>
   </div>
 </header>
+
+<app-login *ngIf="viewFormLogin" [viewForm]="viewFormLogin" (close)="closeForm()"></app-login>
