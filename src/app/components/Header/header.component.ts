@@ -32,6 +32,10 @@ export class HeaderComponent {
   connectionText: string;
 
   constructor(private modeEditService: ModeEditService) {
+    let isLogin = Boolean(window.sessionStorage.getItem('isLogin'));
+
+    if (isLogin) this.modeEditService.dispatchEdit.emit(true);
+
     this.connectionText = 'INICIAR SESIÓN';
   }
 
@@ -47,6 +51,7 @@ export class HeaderComponent {
 
     if (this.viewEdit) {
       this.modeEditService.dispatchEdit.emit(false);
+      window.sessionStorage.setItem('isLogin', 'false');
     } else {
       this.viewFormLogin = true;
     }

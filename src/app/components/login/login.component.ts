@@ -74,6 +74,7 @@ export class LoginComponent {
     this.authentication.login(this.form.value).subscribe((data) => {
       if (data) {
         this.modeEditService.dispatchEdit.emit(true);
+        window.sessionStorage.setItem('isLogin', 'true');
 
         this.error = '';
         this.close.emit(false);
