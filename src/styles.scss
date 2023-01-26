@@ -1,4 +1,3 @@
-@use "./media-queries";
 @use "./normalize";
 
 :root {
@@ -234,6 +233,13 @@ main .section:last-child {
 
 .relative {
   position: relative;
+}
+
+@media screen and (min-width: 36.25rem) {
+  .button {
+    padding-left: 1rem;
+    padding-right: 1rem;
+  }
 }
 
 @media (max-width: 28.25rem) {

@@ -90,6 +90,14 @@
   gap: 1rem;
 }
 
+.floatBtns {
+  --position: 1rem;
+  position: absolute;
+  top: var(--position);
+  right: var(--position);
+  z-index: 5;
+}
+
 @media only screen and (max-width: 61.9375rem) {
   .card-containerImg {
     display: flex;
@@ -116,12 +124,4 @@
     position: static;
     scroll-snap-align: center;
   }
-}
-
-.floatBtns {
-  --position: 1rem;
-  position: absolute;
-  top: var(--position);
-  right: var(--position);
-  z-index: 5;
 }
